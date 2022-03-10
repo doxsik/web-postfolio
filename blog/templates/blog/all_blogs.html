@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block body %}
+
+
+<h1>Eugene has {{ blogs.count }} blog{{ blogs.count|pluralize }}</<h4></h4>
+<br>
+<div class="container text-start">
+{% for blog in blogs %}
+<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+<p class="fst-italic">{{ blog.date|date:'d F y'|upper }}</p>
+<p class="fst-normal">{{ blog.description|safe|truncatechars:100 }}</p>
+<br>
+{% endfor %}
+</div>
+{% endblock %}
